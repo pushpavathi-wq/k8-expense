@@ -11,7 +11,7 @@ metadata:
 
 spec:  
   replicas: 1
-  selectors:
+  selector:
     matchLabels:
       app: mysql
 
@@ -22,14 +22,14 @@ spec:
         project: expense
         app: mysql  
 
-  spec:
-    containers:
-    - name: mysql
-      image: pushpa4/mysql:1.0.2
+    spec:
+      containers:
+      - name: mysql
+        image: pushpa4/mysql:1.0.2
 
 
 # Here we are creating the expense project in single namespace, so mysql-backend communication purpose use service
-
+---
 
 apiVersion: v1
 kind: Service
