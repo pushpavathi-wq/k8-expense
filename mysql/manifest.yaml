@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
       - name: mysql
-        image: pushpa4/mysql:1.0.2
+        image: pushpa4/mysql:1.0.1
 
 
 # Here we are creating the expense project in single namespace, so mysql-backend communication purpose use service
