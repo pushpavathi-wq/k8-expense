@@ -25,7 +25,9 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: pushpa4/backend:1.2.3
+        image: pushpa4/frontend:1.2.3
+        ports:
+        - containerPort: 8080
 
 
 # Here we are creating the expense project in single namespace, so mysql-backend communication purpose use service
@@ -49,6 +51,6 @@ spec:
 
   ports:
   - protocol: TCP
-    port: 3306
-    targetPort: 3306   
+    port: 80
+    targetPort: 8080  
 
