@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: backend
+
+  labels:
+    app: backend
+
+  namespace: expense  
+
+spec:  
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+
+  template:
+    metadata:
+      labels:
+        environment: dev
+        project: expense
+        app: backend  
+
+    spec:
+      containers:
+      - name: backend
+        image: pushpa4/backend:1.2.0
+
+
+# Here we are creating the expense project in single namespace, so mysql-backend communication purpose use service
+---
+
+apiVersion: v1
+kind: Service
+
+metadata: 
+  name: backend
+  namespace: expense
+
+
+spec:
+  type: LoadBalancer
+
+  selector:
+    app: backend
+    project: expense
+    environment: dev
+
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080  
+
